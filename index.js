@@ -2,6 +2,12 @@
     var tpl = {
         addCol : "<div class=\"addCol\"></div>",
         addRow : "<div class=\"addRow\"></div>",
+        item : function () {
+            var item = document.createElement("div");
+            item.innerHTML = "aaaa";
+            return item;
+        },
+        row : "<div class=\"row\"></div>"
     };
 
     function init () {
@@ -9,15 +15,21 @@
     }
 
     function bindEvent () {
-        var addItem = document.querySelector(".addItem");
-        var addRow = document.querySelector(".addRow");
-        console.log(addItem);
-        addItem.onclick = function(){
-            console.log('aaaaa');
+        var addItemBtn = document.querySelector(".addItem");
+        var addRowBtn = document.querySelector(".addRow");
+        addItemBtn.onclick = function(e){
+            addItem(e);
         };
-        addRow.onclick = function(){
+        addRowBtn.onclick = function(){
             console.log('bbbbbb');
         };
+    }
+
+    function addItem (e) {
+        e.target.parentNode.insertBefore(tpl.item(),e.target);
+    }
+
+    function addRow () {
     }
 
     init();
